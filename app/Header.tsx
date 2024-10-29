@@ -3,7 +3,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <Grid align="center" columns="2" gap="5" width="100vw" height="90vh" className="bg-sky-950 text-gray-300 p-10">
+    <Grid align="center" columns="2"   className="bg-sky-950 text-gray-100 p-10 h-screen">
       
      <Box width="75%" height="75%" className="bg-slate-50  "></Box>
         <Grid rows="2" justify="center" align="center"     height={"75%"} className="">
