@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Apartment {
+  id              Int             @id @default(autoincrement())
+  estateType      String
+  location        String
+  dierction       String
+  floor           String
+  services        String
+  apartmentStatus ApartmentStatus
+  isSold          Boolean         @default(false)
+  createdAt       DateTime        @default(now())
+  images          Image[]
+}
+
+model Image {
+  src       String    @db.Text
+  title     String    @db.VarChar(255)
+  apartment Apartment @relation(fields: [imageID], references: [id])
+  imageID   Int       @unique
+}
+
+enum ApartmentStatus {
+  NEW_BUILD
+  OLD_BUILD
+}
+
+model CommercialEstate {
+  id         Int    @id @default(autoincrement())
+  estateType String
+  dierction  String
+  location   String
+  services   String
+}
