@@ -16,46 +16,74 @@ datasource db {
 model Apartment {
   id              Int             @id @default(autoincrement())
   estateType      String
-  location        String @db.VarChar(255)
-  dierction       String @db.VarChar(255)
+  location        String          @db.VarChar(255)
+  dierction       String          @db.VarChar(255)
   floor           String
-  services        String @db.VarChar(255)
+  services        String          @db.VarChar(255)
   apartmentStatus ApartmentStatus
-  isAvailable          IsAvailable        @default(AVAILABLE)
+  isAvailable     IsAvailable     @default(AVAILABLE)
   createdAt       DateTime        @default(now())
-  imageId Int
-  image Image @relation(fields: [imageId], references: [id])
-  price Decimal 
-
+  imageId         Int
+  image           Image           @relation(fields: [imageId], references: [id])
+  vedioId         Int             @unique
+  video           Video           @relation(fields: [vedioId], references: [id])
+  price           Decimal
+  space           Int
 }
 
 model Image {
-  
-  id        Int      @id @default(autoincrement()) 
+  id         Int    @id @default(autoincrement())
   imageTitle String @db.VarChar(255)
-  url       String    @db.Text
-  
-  modelA   Apartment[]
-  modelB   CommercialEstate[]
+  url        String @db.Text
+
+  apartmentModel        Apartment[]
+  commercialEstateModel CommercialEstate[]
+  agriculturalEstate    AgriculturalEstate?
+}
+
+model Video {
+  id         Int    @id @default(autoincrement())
+  videoTitle String @db.VarChar(255)
+  url        String @db.Text
+
+  apartmentModel        Apartment?
+  commercialEstateModel CommercialEstate?
 }
 
 enum ApartmentStatus {
   NEW_BUILD
   OLD_BUILD
 }
-enum IsAvailable{
+
+enum IsAvailable {
   AVAILABLE
   SOLD
 }
 
 model CommercialEstate {
-  id         Int    @id @default(autoincrement())
-  estateType String
-  dierction  String
-  location   String
-  services   String
+  id          Int         @id @default(autoincrement())
+  estateType  String
+  dierction   String
+  location    String
+  services    String
+  space       Int
+  price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
-  imageId Int
-  image Image @relation(fields: [imageId], references: [id])
+  imageId     Int
+  image       Image       @relation(fields: [imageId], references: [id])
+  vedioId     Int         @unique
+  video       Video       @relation(fields: [vedioId], references: [id])
+}
 
+model AgriculturalEstate {
+  id          Int         @id @default(autoincrement())
+  estateType  String
+  dierction   String
+  location    String
+  services    String
+  space       Int
+  price       Decimal
+  isAvailable IsAvailable @default(AVAILABLE)
+  imageId     Int         @unique
+  image       Image       @relation(fields: [imageId], references: [id])
 }
