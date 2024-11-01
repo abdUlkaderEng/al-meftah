@@ -16,26 +16,36 @@ datasource db {
 model Apartment {
   id              Int             @id @default(autoincrement())
   estateType      String
-  location        String
-  dierction       String
+  location        String @db.VarChar(255)
+  dierction       String @db.VarChar(255)
   floor           String
-  services        String
+  services        String @db.VarChar(255)
   apartmentStatus ApartmentStatus
-  isSold          Boolean         @default(false)
+  isAvailable          IsAvailable        @default(AVAILABLE)
   createdAt       DateTime        @default(now())
-  images          Image[]
+  imageId Int
+  image Image @relation(fields: [imageId], references: [id])
+  price Decimal 
+
 }
 
 model Image {
-  src       String    @db.Text
-  title     String    @db.VarChar(255)
-  apartment Apartment @relation(fields: [imageID], references: [id])
-  imageID   Int       @unique
+  
+  id        Int      @id @default(autoincrement()) 
+  imageTitle String @db.VarChar(255)
+  url       String    @db.Text
+  
+  modelA   Apartment[]
+  modelB   CommercialEstate[]
 }
 
 enum ApartmentStatus {
   NEW_BUILD
   OLD_BUILD
+}
+enum IsAvailable{
+  AVAILABLE
+  SOLD
 }
 
 model CommercialEstate {
@@ -44,4 +54,8 @@ model CommercialEstate {
   dierction  String
   location   String
   services   String
+  isAvailable IsAvailable @default(AVAILABLE)
+  imageId Int
+  image Image @relation(fields: [imageId], references: [id])
+
 }
