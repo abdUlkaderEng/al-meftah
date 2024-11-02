@@ -31,35 +31,6 @@ model Apartment {
   space           Int
 }
 
-model Image {
-  id         Int    @id @default(autoincrement())
-  imageTitle String @db.VarChar(255)
-  url        String @db.Text
-
-  apartmentModel        Apartment[]
-  commercialEstateModel CommercialEstate[]
-  agriculturalEstate    AgriculturalEstate?
-}
-
-model Video {
-  id         Int    @id @default(autoincrement())
-  videoTitle String @db.VarChar(255)
-  url        String @db.Text
-
-  apartmentModel        Apartment?
-  commercialEstateModel CommercialEstate?
-}
-
-enum ApartmentStatus {
-  NEW_BUILD
-  OLD_BUILD
-}
-
-enum IsAvailable {
-  AVAILABLE
-  SOLD
-}
-
 model CommercialEstate {
   id          Int         @id @default(autoincrement())
   estateType  String
@@ -80,10 +51,64 @@ model AgriculturalEstate {
   estateType  String
   dierction   String
   location    String
-  services    String
+  description String      @db.Text
   space       Int
   price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
   imageId     Int         @unique
   image       Image       @relation(fields: [imageId], references: [id])
+}
+
+model TouristEstate {
+  id          Int         @id @default(autoincrement())
+  estateType  String
+  dierction   String
+  location    String
+  description String      @db.Text
+  space       Int
+  price       Decimal
+  isAvailable IsAvailable @default(AVAILABLE)
+  imageId     Int         @unique
+  image       Image       @relation(fields: [imageId], references: [id])
+}
+
+model Pledge {
+  id               Int    @id @default(autoincrement())
+  descriptionBefor String @db.Text
+  descriptionAfter String @db.Text
+  imageBeforId     Int    @unique
+  // imageAfterId Int @unique
+  imageBefor       Image  @relation(fields: [imageBeforId], references: [id])
+  // imageaefor       Image       @relation(fields: [ imageAfterId], references: [id])
+}
+
+model Image {
+  id         Int    @id @default(autoincrement())
+  imageTitle String @db.VarChar(255)
+  url        String @db.Text
+
+  apartmentModel        Apartment[]
+  commercialEstateModel CommercialEstate[]
+  agriculturalEstate    AgriculturalEstate?
+  touristEstate         TouristEstate?
+  pledg                 Pledge[]
+}
+
+model Video {
+  id         Int    @id @default(autoincrement())
+  videoTitle String @db.VarChar(255)
+  url        String @db.Text
+
+  apartmentModel        Apartment?
+  commercialEstateModel CommercialEstate?
+}
+
+enum ApartmentStatus {
+  NEW_BUILD
+  OLD_BUILD
+}
+
+enum IsAvailable {
+  AVAILABLE
+  SOLD
 }
