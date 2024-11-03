@@ -13,3 +13,5 @@ export const sectionsEstate:sectionEstate[] = [
     {"endPoint" :"touristEstate","title":"مزارع وفلل" , "description": "مزارع وفلل سياحية"  , "image":"/assests/Images/house.jpg"},
     {"endPoint" :"pledge","title":"تعهدات و إكساء" , "description": "ترميم وإكساء المنازل والمحلات القديمة أو الجديدة غير المكسية"  , "image":"/assests/Images/house.jpg"}
 ]
+
+
