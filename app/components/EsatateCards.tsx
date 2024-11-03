@@ -1,17 +1,32 @@
-import prisma from "@/prisma/client";
-import { Box, Card, Flex, Avatar, Text, Heading, Grid } from "@radix-ui/themes";
-import React from "react";
-import image from "@/public/assests/Images/house.jpg";
-import Image from "next/image";
-import { estateCardElement } from "@/public/estateCardElements";
+import prisma from '@/prisma/client'
+import { estateCardElement } from '@/public/estateCardElements'
+import { Text, Grid, Card } from '@radix-ui/themes'
+import image from '@/public/assests/Images/house.jpg'
+import  Image  from 'next/image'
+import { PrismaClient } from '@prisma/client'
 
-const NewEstatesPage = async () => {
-  const data = await prisma.apartment.findMany({
-    where:{apartmentStatus:"NEW_BUILD"}
-  })
-  
-  
-  return (
+interface Props{
+   data : {
+    id: number;
+    estateType: string;
+    location: string;
+    dierction: string;
+    floor: string;
+    services: string;
+    apartmentStatus: string;
+    isAvailable: string;
+   
+    space: number;
+}[] 
+}
+const EsatateCards = async ({} : Props) => {
+
+   const modelName =  new PrismaClient()
+      const   data = await prisma.apartment.findMany({
+            where: { apartmentStatus: "NEW_BUILD" },
+      });
+    
+    return (
     <Grid p="5" columns="3" gap="5">
       {data.map((d) => (
         <Card key={d.id}>
@@ -19,7 +34,7 @@ const NewEstatesPage = async () => {
           <Grid p="3" className="text-right  " columns="2">
             <Grid gap="2" className="font-thin text-lg">
               <Text className="border-dotted  border-b-2   p-1">
-                { d.estateType}
+                {d.estateType}
               </Text>
               <Text className="border-dotted border-b-2  p-1 ">
                 {d.location}
@@ -61,7 +76,7 @@ const NewEstatesPage = async () => {
         </Card>
       ))}
     </Grid>
-  );
-};
+  )
+}
 
-export default NewEstatesPage;
+export default EsatateCards

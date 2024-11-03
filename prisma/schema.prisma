@@ -23,10 +23,7 @@ model Apartment {
   apartmentStatus ApartmentStatus
   isAvailable     IsAvailable     @default(AVAILABLE)
   createdAt       DateTime        @default(now())
-  imageId         Int
-  image           Image           @relation(fields: [imageId], references: [id])
   vedioId         Int             @unique
-  video           Video           @relation(fields: [vedioId], references: [id])
   price           Decimal
   space           Int
 }
@@ -40,10 +37,8 @@ model CommercialEstate {
   space       Int
   price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
-  imageId     Int
-  image       Image       @relation(fields: [imageId], references: [id])
-  vedioId     Int         @unique
-  video       Video       @relation(fields: [vedioId], references: [id])
+
+  vedioId Int   @unique
 }
 
 model AgriculturalEstate {
@@ -55,8 +50,6 @@ model AgriculturalEstate {
   space       Int
   price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
-  imageId     Int         @unique
-  image       Image       @relation(fields: [imageId], references: [id])
 }
 
 model TouristEstate {
@@ -68,40 +61,16 @@ model TouristEstate {
   space       Int
   price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
-  imageId     Int         @unique
-  image       Image       @relation(fields: [imageId], references: [id])
 }
 
 model Pledge {
   id               Int    @id @default(autoincrement())
   descriptionBefor String @db.Text
   descriptionAfter String @db.Text
-  imageBeforId     Int    @unique
-  // imageAfterId Int @unique
-  imageBefor       Image  @relation(fields: [imageBeforId], references: [id])
+
   // imageaefor       Image       @relation(fields: [ imageAfterId], references: [id])
 }
 
-model Image {
-  id         Int    @id @default(autoincrement())
-  imageTitle String @db.VarChar(255)
-  url        String @db.Text
-
-  apartmentModel        Apartment[]
-  commercialEstateModel CommercialEstate[]
-  agriculturalEstate    AgriculturalEstate?
-  touristEstate         TouristEstate?
-  pledg                 Pledge[]
-}
-
-model Video {
-  id         Int    @id @default(autoincrement())
-  videoTitle String @db.VarChar(255)
-  url        String @db.Text
-
-  apartmentModel        Apartment?
-  commercialEstateModel CommercialEstate?
-}
 
 enum ApartmentStatus {
   NEW_BUILD

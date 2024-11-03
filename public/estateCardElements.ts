@@ -12,11 +12,11 @@ interface estateCardElement{
 }
 export const estateCardElement =
 {
-    "estateType": "نوع العقار",
-    "location": "موقع العقار",
-    "dierction": "الإتجاهات",
-    "floor": "الطابق",
-    "services": "خدمات إضافية",
-    "space": "مساحة العقار",
-    "price": "سعر المتر التقريبي"
+    "estateType": ":نوع العقار",
+    "location": ":موقع العقار",
+    "dierction": ":الإتجاهات",
+    "floor": ":الطابق",
+    "services": ":خدمات إضافية",
+    "space": ":مساحة العقار",
+    "price": ":سعر المتر التقريبي"
 }

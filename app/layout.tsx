@@ -27,6 +27,7 @@ export default function RootLayout({
             
           </nav>
           <main>{children}</main>
+          
         </Theme>
       </body>
     </html>
