@@ -26,6 +26,8 @@ model Apartment {
   vedioId         Int             @unique
   price           Decimal
   space           Int
+  images          Image[]         @relation("ApartmentImages")
+  video           String?         @db.VarChar(255)
 }
 
 model CommercialEstate {
@@ -37,8 +39,9 @@ model CommercialEstate {
   space       Int
   price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
-
-  vedioId Int   @unique
+  images      Image[]     @relation("CommercialEstateImages")
+  vedioId     Int         @unique
+  video       String?     @db.VarChar(255)
 }
 
 model AgriculturalEstate {
@@ -50,6 +53,7 @@ model AgriculturalEstate {
   space       Int
   price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
+  images      Image[]     @relation("AgriculturalEstateImages")
 }
 
 model TouristEstate {
@@ -61,16 +65,41 @@ model TouristEstate {
   space       Int
   price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
+  images      Image[]     @relation("TouristEstateImages")
+  video       String?     @db.VarChar(255)
 }
 
 model Pledge {
   id               Int    @id @default(autoincrement())
   descriptionBefor String @db.Text
   descriptionAfter String @db.Text
+  imageBefore      Image? @relation("PledgeImageBefore")
 
-  // imageaefor       Image       @relation(fields: [ imageAfterId], references: [id])
+  imageAfter Image? @relation("PledgeImageAfter")
 }
 
+model Image {
+  id  Int    @id @default(autoincrement())
+  url String @db.VarChar(255)
+
+  apartment   Apartment? @relation("ApartmentImages", fields: [apartmentId], references: [id])
+  apartmentId Int?
+
+  commercialEstate   CommercialEstate? @relation("CommercialEstateImages", fields: [commercialEstateId], references: [id])
+  commercialEstateId Int?
+
+  agriculturalEstate   AgriculturalEstate? @relation("AgriculturalEstateImages", fields: [agriculturalEstateId], references: [id])
+  agriculturalEstateId Int?
+
+  touristEstate   TouristEstate? @relation("TouristEstateImages", fields: [touristEstateId], references: [id])
+  touristEstateId Int?
+
+  pledgeBefore   Pledge? @relation("PledgeImageBefore", fields: [pledgeBeforeId], references: [id])
+  pledgeBeforeId Int?    @unique
+
+  pledgeAfter   Pledge? @relation("PledgeImageAfter", fields: [pledgeAfterId], references: [id])
+  pledgeAfterId Int?    @unique
+}
 
 enum ApartmentStatus {
   NEW_BUILD
