@@ -4,14 +4,20 @@ import React from "react";
 import image from "@/public/assests/Images/house.jpg";
 import Image from "next/image";
 import { estateCardElement } from "@/public/estateCardElements";
+import EsatateCards from "../components/EsatateCards";
 
 const NewEstatesPage = async () => {
   const data = await prisma.apartment.findMany({
-    where:{apartmentStatus:"NEW_BUILD"}
+    where: { apartmentStatus: "NEW_BUILD"}
+    
   })
   
   
+  
   return (
+    
+    // data.map( d => <EsatateCards key={d.id} data={d} /> )
+    
     <Grid p="5" columns="3" gap="5">
       {data.map((d) => (
         <Card key={d.id}>

@@ -23,7 +23,6 @@ model Apartment {
   apartmentStatus ApartmentStatus
   isAvailable     IsAvailable     @default(AVAILABLE)
   createdAt       DateTime        @default(now())
-  vedioId         Int             @unique
   price           Decimal
   space           Int
   images          Image[]         @relation("ApartmentImages")
@@ -65,7 +64,7 @@ model TouristEstate {
   price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
   images      Image[]     @relation("TouristEstateImages")
-  video       String?     @db.VarChar(255)
+  video       String?     @db.VarChar(255) @default("none")
 }
 
 model Pledge {
