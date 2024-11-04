@@ -40,7 +40,6 @@ model CommercialEstate {
   price       Decimal
   isAvailable IsAvailable @default(AVAILABLE)
   images      Image[]     @relation("CommercialEstateImages")
-  vedioId     Int         @unique
   video       String?     @db.VarChar(255)
 }
 
