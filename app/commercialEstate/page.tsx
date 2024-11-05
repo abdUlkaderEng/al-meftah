@@ -1,11 +1,10 @@
 import prisma from "@/prisma/client";
 import { Grid } from "@radix-ui/themes";
+import React from "react";
 import EsatateCards from "../components/EstateCard";
 
-const OldEstatePage = async () => {
-  const data = await prisma.apartment.findMany({
-    where: { apartmentStatus: "OLD_BUILD" },
-  });
+const CommercialEstate = async () => {
+  const data = await prisma.commercialEstate.findMany();
   return (
     <Grid columns="3" p="5" gap="5">
       {data.map((d) => (
@@ -15,4 +14,4 @@ const OldEstatePage = async () => {
   );
 };
 
-export default OldEstatePage;
+export default CommercialEstate;

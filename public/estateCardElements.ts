@@ -8,6 +8,7 @@ interface estateCardElement{
     services: string
     space: number
     price: number
+    description:string
 
 }
 export const estateCardElement =
@@ -18,5 +19,6 @@ export const estateCardElement =
     "floor": ":الطابق",
     "services": ":خدمات إضافية",
     "space": ":مساحة العقار",
-    "price": ":سعر المتر التقريبي"
+    "price": ":سعر المتر التقريبي",
+    "description":"شرح عن العقار"
 }
