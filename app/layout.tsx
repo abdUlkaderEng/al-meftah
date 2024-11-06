@@ -4,7 +4,7 @@ import "./globals.css";
 import NavBar from "./NavBar";
 import "@radix-ui/themes/styles.css";
 
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { ScrollArea, Theme, ThemePanel } from "@radix-ui/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-         <Theme radius="large">
+        <Theme radius="large">
           <nav>
             <NavBar />
             
           </nav>
-          <main>{children}</main>
+            <main>
+              {children}
+            </main>
           
         </Theme>
       </body>

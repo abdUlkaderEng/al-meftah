@@ -14,17 +14,17 @@ interface Props {
     estateType: string;
     location: string;
     dierction: string;
-    floor?: string;
-    services?: string;
-    apartmentStatus?: string;
     isAvailable: string;
     price: Decimal;
     space: number;
+    apartmentStatus?: string;
+    floor?: string;
+    services?: string;
     video?: string | null;
     description?: string;
   };
 }
-const EsatateCards = async ({ data }: Props) => {
+const EsatateCards =  ({ data }: Props) => {
   return (
     <Card key={data.id}>
       <Image alt={data.dierction} src={image} />

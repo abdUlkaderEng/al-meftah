@@ -4,11 +4,11 @@ import React from "react";
 
 const NavBar = () => {
   return (
-    <Box className="flex flex-row-reverse  items-center text-right bg-sky-950 text-cyan-50">
+    <TabNav.Root className="flex flex-row-reverse  items-center text-right bg-sky-950 text-cyan-50">
       <Link className="m-5" href={"/"}>
         عالمفتاح
       </Link>
-    </Box>
+    </TabNav.Root>
   );
 };
 

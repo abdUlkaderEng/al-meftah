@@ -10,7 +10,7 @@ const SectionsContainer = () => {
     <Grid gap="3" columns="3" className="p-5 ">
       {sectionsEstate.map((s) => (
         <Link key={s.title} href={"/" + s.endPoint}>
-          <Card className="flex flex-col justify-items-center space-y-2">
+          <Card size="1" className="flex flex-col justify-items-center space-y-2">
             <Image
               src={s.image}
               alt={s.title}
@@ -18,10 +18,10 @@ const SectionsContainer = () => {
               height={400}
               className="border-4 "
             />
-            <Heading as="h3" className="text-right">
+            <Heading as="h3">
               {s.title}
             </Heading>
-            <Text as="p" className="text-right">
+            <Text as="p" className="text-center">
               {s.description}
             </Text>
           </Card>
