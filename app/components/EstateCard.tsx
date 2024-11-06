@@ -4,6 +4,7 @@ import { Text, Grid, Card, Table } from "@radix-ui/themes";
 import image from "@/public/assests/Images/house.jpg";
 import Image from "next/image";
 import { Decimal } from "@prisma/client/runtime/library";
+import ImagesSlideShow from "./ImagesSlideShow";
 interface ImageModel {
   id: number;
   url: string;
@@ -27,8 +28,7 @@ interface Props {
 const EsatateCards =  ({ data }: Props) => {
   return (
     <Card key={data.id}>
-      <Image alt={data.dierction} src={image} />
-
+      <ImagesSlideShow />
       <Table.Root layout="fixed" size="3" className=" font-thin">
         <Table.Row align="center" className="text-lg">
           <Table.Cell justify="center"> {data.estateType}</Table.Cell>
