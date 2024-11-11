@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         
       <Theme accentColor="cyan" radius="large">
-            <nav>
+            <nav className="bgNav">
               <NavBar />
           
             </nav>

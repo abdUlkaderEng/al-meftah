@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Heading, Section } from "@radix-ui/themes";
+import { Box, Flex, Grid, Heading, Section,Text } from "@radix-ui/themes";
 import React from "react";
 
 const Header = () => {
@@ -20,10 +20,10 @@ const Header = () => {
           height={"75%"}
           className=""
         >
-          <Heading size="9" className="">
-            استلم بيتك عالمفتاح
-          </Heading>
-          <Heading as="h4" weight="light" className="">
+          <Text  className="text-7xl">
+            استلم عالمفتاح
+          </Text>
+          <Heading as="h4" weight="light" className="text-9xl">
             مسؤولون عن ثبوتيات وأوراق المنشأة ومصداقية البائع والشاري
           </Heading>
         </Grid>

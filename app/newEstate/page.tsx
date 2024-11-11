@@ -11,7 +11,7 @@ const NewEstatesPage = async () => {
   return (
     <Box p="5">
       <Filters />
-    <Grid columns="3"  pt="2" gap="5">
+    <Grid columns={{ initial: "1",sm:"2", md: "3" }}  pt="2" gap="5">
       {data.map((d) => (
         <EsatateCards key={d.id} data={d} />
       ))}
