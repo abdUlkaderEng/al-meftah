@@ -21,17 +21,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Theme radius="large">
-          <nav>
-            <NavBar />
-            
-          </nav>
-            <main>
-              {children}
-            </main>
+        
+      <Theme accentColor="cyan" radius="large">
+            <nav>
+              <NavBar />
           
-        </Theme>
-      </body>
+            </nav>
+              <main>
+                {children}
+              </main>
+              
+          </Theme>
+                </body>
+        
     </html>
   );
 }

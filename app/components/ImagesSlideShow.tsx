@@ -1,10 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import image from "@/public/assests/Images/house.jpg";
-import { Box, Button } from "@radix-ui/themes";
+import image1 from "@/public/assests/Images/house.jpg";
+import image2 from "@/public/assests/Images/house2.jpg";
+import image3 from "@/public/assests/Images/House1 (2).jpg";
+
+import { Box, Button, Flex } from "@radix-ui/themes";
 import Image from "next/image";
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 const ImagesSlideShow = () => {
-  const images = [image, image, image];
+  const images = [image1, image2, image3];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextImage = () => {
@@ -18,11 +22,11 @@ const ImagesSlideShow = () => {
   };
 
   return (
-    <Box>
-      <Image src={images[currentIndex]} alt="" />
-    <Button onClick={prevImage}>ق</Button>
-    <Button onClick={nextImage}>ب</Button>
-      </Box>
+    <Flex align="center" justify={"center"} className="relative"  >
+      <Button asChild variant="surface"   className="sticky left-0.5 z-10 w-9" onClick={prevImage}><ChevronLeftIcon /></Button>
+      <Image  className="object-fill " src={images[currentIndex]} alt="" />
+      <Button asChild variant="surface"  className="sticky right-0.5 z-10 w-9" onClick={nextImage}><ChevronRightIcon /></Button>
+    </Flex>
   );
 };
 

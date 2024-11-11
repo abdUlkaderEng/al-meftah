@@ -25,47 +25,49 @@ interface Props {
     description?: string;
   };
 }
-const EsatateCards =  ({ data }: Props) => {
+const EsatateCards = ({ data }: Props) => {
   return (
     <Card key={data.id}>
       <ImagesSlideShow />
       <Table.Root layout="fixed" size="3" className=" font-thin">
-        <Table.Row align="center" className="text-lg">
-          <Table.Cell justify="center"> {data.estateType}</Table.Cell>
-          <Table.Cell justify="center">
-            {estateCardElement.estateType}
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row className="text-lg">
-          <Table.Cell justify="center"> {data.location}</Table.Cell>
-          <Table.Cell justify="center">{estateCardElement.location}</Table.Cell>
-        </Table.Row>
-        {data.floor && (
-          <Table.Row className="text-lg">
-            <Table.Cell justify="center"> {data.floor}</Table.Cell>
-            <Table.Cell justify="center">{estateCardElement.floor}</Table.Cell>
-          </Table.Row>
-        )}
-        {data.services && (
-          <Table.Row className="text-lg">
-            <Table.Cell justify="center"> {data.services}</Table.Cell>
+        <Table.Body>
+          <Table.Row align="center" className="text-lg">
+            <Table.Cell justify="center"> {data.estateType}</Table.Cell>
             <Table.Cell justify="center">
-              {estateCardElement.services}
+              {estateCardElement.estateType}
             </Table.Cell>
           </Table.Row>
-        )}
-        {data.description && (
           <Table.Row className="text-lg">
-            <Table.Cell justify="center"> {data.description}</Table.Cell>
-            <Table.Cell justify="center">
-              {estateCardElement.description}
-            </Table.Cell>
+            <Table.Cell justify="center"> {data.location}</Table.Cell>
+            <Table.Cell justify="center">{estateCardElement.location}</Table.Cell>
           </Table.Row>
-        )}
-        <Table.Row className="text-lg">
-          <Table.Cell justify="center"> {data.price.toFixed()} S.P</Table.Cell>
-          <Table.Cell justify="center">{estateCardElement.price}</Table.Cell>
-        </Table.Row>
+          {data.floor && (
+            <Table.Row className="text-lg">
+              <Table.Cell justify="center"> {data.floor}</Table.Cell>
+              <Table.Cell justify="center">{estateCardElement.floor}</Table.Cell>
+            </Table.Row>
+          )}
+          {data.services && (
+            <Table.Row className="text-lg">
+              <Table.Cell justify="center"> {data.services}</Table.Cell>
+              <Table.Cell justify="center">
+                {estateCardElement.services}
+              </Table.Cell>
+            </Table.Row>
+          )}
+          {data.description && (
+            <Table.Row className="text-lg">
+              <Table.Cell justify="center"> {data.description}</Table.Cell>
+              <Table.Cell justify="center">
+                {estateCardElement.description}
+              </Table.Cell>
+            </Table.Row>
+          )}
+          <Table.Row className="text-lg">
+            <Table.Cell justify="center"> {data.price.toFixed()} S.P</Table.Cell>
+            <Table.Cell justify="center">{estateCardElement.price}</Table.Cell>
+          </Table.Row>
+        </Table.Body>
       </Table.Root>
     </Card>
   );
