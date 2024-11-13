@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Styles from "./Filters.module.css";
 
@@ -10,6 +11,8 @@ import {
 } from "@radix-ui/themes";
 import { ArrowDownIcon, DropdownMenuIcon } from "@radix-ui/react-icons";
 import { filters } from "@/public/filters";
+
+
 const Filters = () => {
   return (
     <Flex gap="2" justify="end" align="center" className="mt-8">
@@ -24,7 +27,7 @@ const Filters = () => {
           <DropdownMenu.Content variant="soft">
             {filter.items.map((item, index) => (
               <Box key={index}>
-                <DropdownMenu.Item className={Styles.item}>
+                <DropdownMenu.Item className={Styles.item} onClick={() => (item)}>
                   {item}
                 </DropdownMenu.Item>
                 <DropdownMenu.Separator />

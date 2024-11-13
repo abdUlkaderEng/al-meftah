@@ -1,10 +1,12 @@
 import prisma from "@/prisma/client";
 import { estateCardElement } from "@/public/estateCardElements";
-import { Text, Grid, Card, Table } from "@radix-ui/themes";
-import image from "@/public/assests/Images/house.jpg";
+import { Text, Grid, Card, Table, Box, Flex } from "@radix-ui/themes";
+import SoldStamp from "@/public/assests/Images/SoldStamp.png";
 import Image from "next/image";
 import { Decimal } from "@prisma/client/runtime/library";
 import ImagesSlideShow from "./ImagesSlideShow";
+import Style from "./EstateCard.module.css"
+import classNames from "classnames";
 interface ImageModel {
   id: number;
   url: string;
@@ -25,32 +27,42 @@ interface Props {
     description?: string;
   };
 }
+//  ? "grayscale cursor-no-drop" :  Style.cardHover
 const EsatateCards = ({ data }: Props) => {
   return (
-    <Card key={data.id}>
-      <ImagesSlideShow />
+    <Card key={data.id} className={classNames({
+      " cursor-no-drop": data.isAvailable === "SOLD" ,
+      "hover:shadow-orange-500 hover:shadow-inner hover:transition-shadow ":data.isAvailable !== "SOLD"
+      , "bg-orange-200": true,
+      
+    })}>
+
+      <Flex justify="center" align="center" className="relative">
+        {data.isAvailable === "SOLD" ? <Image className="absolute z-10" src={SoldStamp} alt="Sold"/> : <></>}
+        <ImagesSlideShow  />
+      </Flex>
       <Table.Root layout="fixed" size="3" className=" font-thin">
         <Table.Body>
           <Table.Row align="center" className="text-lg">
             <Table.Cell justify="center"> {data.estateType}</Table.Cell>
-            <Table.Cell justify="center">
+            <Table.Cell justify="center" className=" font-medium">
               {estateCardElement.estateType}
             </Table.Cell>
           </Table.Row>
           <Table.Row className="text-lg">
             <Table.Cell justify="center"> {data.location}</Table.Cell>
-            <Table.Cell justify="center">{estateCardElement.location}</Table.Cell>
+            <Table.Cell justify="center" className=" font-medium">{estateCardElement.location}</Table.Cell>
           </Table.Row>
           {data.floor && (
             <Table.Row className="text-lg">
               <Table.Cell justify="center"> {data.floor}</Table.Cell>
-              <Table.Cell justify="center">{estateCardElement.floor}</Table.Cell>
+              <Table.Cell justify="center" className=" font-medium">{estateCardElement.floor}</Table.Cell>
             </Table.Row>
           )}
           {data.services && (
             <Table.Row className="text-lg">
               <Table.Cell justify="center"> {data.services}</Table.Cell>
-              <Table.Cell justify="center">
+              <Table.Cell justify="center" className=" font-medium">
                 {estateCardElement.services}
               </Table.Cell>
             </Table.Row>
@@ -58,14 +70,14 @@ const EsatateCards = ({ data }: Props) => {
           {data.description && (
             <Table.Row className="text-lg">
               <Table.Cell justify="center"> {data.description}</Table.Cell>
-              <Table.Cell justify="center">
+              <Table.Cell justify="center" className=" font-medium">
                 {estateCardElement.description}
               </Table.Cell>
             </Table.Row>
           )}
           <Table.Row className="text-lg">
             <Table.Cell justify="center"> {data.price.toFixed()} S.P</Table.Cell>
-            <Table.Cell justify="center">{estateCardElement.price}</Table.Cell>
+            <Table.Cell justify="center" className=" font-medium">{estateCardElement.price}</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table.Root>
