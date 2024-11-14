@@ -14,7 +14,7 @@ const Header = () => {
         columns="2"
         className=" text-gray-100 p-10 "
       >
-        <Box width="80%" height="100%" className="bg-slate-50  "></Box>
+        <Box width="80%" height="100%" className="  "></Box>
         <Grid
           rows="2"
           justify="center"
@@ -22,8 +22,8 @@ const Header = () => {
           height={"75%"}
           className=""
         >
-          <Text className="text-7xl">استلم عالمفتاح</Text>
-          <Heading as="h4" weight="light" className="text-9xl">
+          <Text className="text-7xl md:text-5xl sm:text-4xl">استلم عالمفتاح</Text>
+          <Heading as="h4" weight="light" className="text-9xl sm:text-5xl ">
             مسؤولون عن ثبوتيات وأوراق المنشأة ومصداقية البائع والشاري
           </Heading>
         </Grid>

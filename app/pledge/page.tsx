@@ -8,9 +8,9 @@ import image from "@/public/assests/Images/house.jpg"
 const Pledge = async () => {
   const data = await prisma.pledge.findMany();
   return (
-    <Grid  columns={{ initial: "1", md: "2" }} gap="5" m="5">
+    <Grid  columns={{ initial: "1", md: "2" }} gap="5" p="5">
       {data.map((d) => (
-        <Card key={d.id}>
+        <Card key={d.id} className="bg-orange-200">
           <Grid gap="1" className="text-right" columns="2">
             <Box className="border-r-2 pr-1 m-0">
               <Heading className="text-center" m="2" >بعد</Heading>

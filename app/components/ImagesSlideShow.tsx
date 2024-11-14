@@ -22,9 +22,9 @@ const ImagesSlideShow = () => {
   };
 
   return (
-    <Flex align="center" justify={"center"} className="static scale-100 z-0 hover:scale-110 transition ease-in-out "  >
+    <Flex align="center" justify={"center"} className="static scale-105 z-0 hover:scale-110 pb-3    transition  "  >
       <Button asChild variant="surface"   className="sticky left-0.5 z-10 w-9" onClick={prevImage}><ChevronLeftIcon /></Button>
-      <Image  className="object-fill rounded-lg " src={images[currentIndex]} alt="" />
+      <Image  className="object-fill rounded-lg  " src={images[currentIndex]} alt="" />
       <Button asChild variant="surface"  className="sticky right-0.5 z-10 w-9" onClick={nextImage}><ChevronRightIcon /></Button>
     </Flex>
   );

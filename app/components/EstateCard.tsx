@@ -7,6 +7,7 @@ import { Decimal } from "@prisma/client/runtime/library";
 import ImagesSlideShow from "./ImagesSlideShow";
 import Style from "./EstateCard.module.css"
 import classNames from "classnames";
+import { ST } from "next/dist/shared/lib/utils";
 interface ImageModel {
   id: number;
   url: string;
@@ -30,12 +31,16 @@ interface Props {
 //  ? "grayscale cursor-no-drop" :  Style.cardHover
 const EsatateCards = ({ data }: Props) => {
   return (
-    <Card key={data.id} className={classNames({
-      " cursor-no-drop": data.isAvailable === "SOLD" ,
-      "hover:shadow-orange-500 hover:shadow-inner hover:transition-shadow ":data.isAvailable !== "SOLD"
-      , "bg-orange-200": true,
+    <Card key={data.id} className={
+      // classNames({
+    //   " cursor-no-drop hover:bg-gray-300  transition": data.isAvailable === "SOLD" ,
+    //   "hover:shadow-orange-500 hover:shadow-inner hover:transition-shadow ":data.isAvailable !== "SOLD"
+    //   , "bg-orange-200": true,
+        
       
-    })}>
+    // })
+     data.isAvailable !== "SOLD" ? Style.cardHover +"hover:shadow-orange-500 hover:shadow-inner hover:transition-shadow " : "cursor-no-drop hover:bg-gray-300  transition" 
+    }>
 
       <Flex justify="center" align="center" className="relative">
         {data.isAvailable === "SOLD" ? <Image className="absolute z-10" src={SoldStamp} alt="Sold"/> : <></>}
