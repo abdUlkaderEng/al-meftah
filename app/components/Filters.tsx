@@ -15,7 +15,7 @@ import { filters } from "@/public/filters";
 
 const Filters = () => {
   return (
-    <Flex gap="2" justify="end" align="center" className="mt-8">
+    <Flex gap="2" justify="end" align="center" className="mt-8 pb-2">
       {filters.map((filter) => (
         <DropdownMenu.Root key={filter.filterType}>
             <DropdownMenu.Trigger className={Styles.trigger}>
