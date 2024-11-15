@@ -19,16 +19,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" >
       <body className={inter.className}>
         
-      <Theme accentColor="amber" radius="large">
-             <Box className="bgNav">
+      <Theme accentColor="amber" radius="large" className="backGroundColor">
+             <Box >
              
                   <NavBar  />
              </Box>
              
-                <main className="bgBody">
+                <main >
                   {children}
                 </main>
               

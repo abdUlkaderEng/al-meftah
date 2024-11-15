@@ -1,14 +1,16 @@
-import prisma from "@/prisma/client";
-import { Box, Card, Grid, Heading, Table, Text } from "@radix-ui/themes";
-import React from "react";
-import EsatateCards from "../components/EstateCard";
+"use client"
+import image from "@/public/assests/Images/house.jpg";
+import { Pledge as PledgeInterface } from "@prisma/client";
+import { Box, Card, Grid, Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
-import image from "@/public/assests/Images/house.jpg"
-import Style from "../components/EstateCard.module.css"
-const Pledge = async () => {
-  const data = await prisma.pledge.findMany();
+import Style from "../components/EstateCard.module.css";
+import useEstate from "../hooks/useEstate";
+import PledgeCardLoading from "../pages/PledgeCardLoading";
+const Pledge =  () => {
+  const {data ,loading} = useEstate<PledgeInterface>("pledge")
   return (
-    <Grid  columns={{ initial: "1", md: "2" }} gap="5" p="5">
+    <Grid columns={{ initial: "1", md: "2" }} gap="5" p="5">
+      {loading ? <PledgeCardLoading /> : <></>}
       {data.map((d) => (
         <Card key={d.id} className={Style.cardHover}>
           <Grid gap="1" className="text-right" columns="2">

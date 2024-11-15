@@ -28,6 +28,7 @@ interface Props {
     video?: string | null;
     description?: string;
   };
+  
 }
 const EsatateCards = ({ data }: Props) => {
   return (
@@ -86,10 +87,7 @@ const EsatateCards = ({ data }: Props) => {
             </Table.Row>
           )}
           <Table.Row className="text-lg">
-            <Table.Cell justify="center">
-              {" "}
-              {data.price.toFixed()} S.P
-            </Table.Cell>
+            <Table.Cell justify="center"> S.P</Table.Cell>
             <Table.Cell justify="center" className=" font-medium">
               {estateCardElement.price}
             </Table.Cell>
