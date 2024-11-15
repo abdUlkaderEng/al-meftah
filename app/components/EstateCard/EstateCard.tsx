@@ -1,14 +1,11 @@
-import prisma from "@/prisma/client";
-import { estateCardElement } from "@/public/estateCardElements";
-import { Text, Grid, Card, Table, Box, Flex } from "@radix-ui/themes";
 import SoldStamp from "@/public/assests/Images/SoldStamp.png";
-import Image from "next/image";
+import { estateCardElement } from "@/public/estateCardElements";
 import { Decimal } from "@prisma/client/runtime/library";
-import ImagesSlideShow from "./ImagesSlideShow";
+import { Card, Flex, Table } from "@radix-ui/themes";
+import Image from "next/image";
+import ImagesSlideShow from "../ImagesSlideShow";
 import Style from "./EstateCard.module.css";
-import classNames from "classnames";
 
-import { ST } from "next/dist/shared/lib/utils";
 interface ImageModel {
   id: number;
   url: string;
@@ -28,7 +25,6 @@ interface Props {
     video?: string | null;
     description?: string;
   };
-  
 }
 const EsatateCards = ({ data }: Props) => {
   return (

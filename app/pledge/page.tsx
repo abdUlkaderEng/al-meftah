@@ -3,7 +3,7 @@ import image from "@/public/assests/Images/house.jpg";
 import { Pledge as PledgeInterface } from "@prisma/client";
 import { Box, Card, Grid, Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
-import Style from "../components/EstateCard.module.css";
+import Style from "../components/EstateCard/EstateCard.module.css";
 import useEstate from "../hooks/useEstate";
 import PledgeCardLoading from "../pages/PledgeCardLoading";
 const Pledge =  () => {

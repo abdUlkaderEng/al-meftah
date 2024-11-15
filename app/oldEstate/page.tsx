@@ -1,8 +1,8 @@
 "use client";
 import { Apartment } from "@prisma/client";
 import { Box, Grid } from "@radix-ui/themes";
-import EsatateCards from "../components/EstateCard";
-import Filters from "../components/Filters";
+import EsatateCards from "../components/EstateCard/EstateCard";
+import Filters from "../components/Filters/Filters";
 import "../hooks/useEstate";
 import useEstate from "../hooks/useEstate";
 import CardsLoadingPage from "../pages/CardsLoadingPage";
