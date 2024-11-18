@@ -6,8 +6,11 @@ import { Checkbox } from "@radix-ui/react-checkbox";
 import Style from "./formStyle.module.css";
 import { EyeClosedIcon, EyeNoneIcon, EyeOpenIcon } from "@radix-ui/react-icons";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import prisma from "@/prisma/client";
+import adminCheck from "./adminCheck";
 const ValidationPage = () => {
   const [visible, setVisible] = useState(false);
+  
   return (
     <Box className={Style.body}>
       <Form.Root className={Style.formContainer}>
@@ -21,7 +24,6 @@ const ValidationPage = () => {
               placeholder="البريد الإلكتروني"
               className={Style.formInput}
             />
-          <Form.Message match={"valueMissing"}>enter a valid email</Form.Message>
           </Form.Field>
           <Form.Field name="Password" aria-required>
             <Box className={Style.inputWrapper}>
