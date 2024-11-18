@@ -24,7 +24,7 @@ model Apartment {
   isAvailable     IsAvailable     @default(AVAILABLE)
   createdAt       DateTime        @default(now())
   price           Decimal
-  space           Int
+  space           Int               
   images          Image[]         @relation("ApartmentImages")
   video           String?         @db.VarChar(255)
 }

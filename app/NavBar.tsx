@@ -31,7 +31,7 @@ const NavBar = () => {
             key={link.linkLabel}
             className={classNames({
               "hover:border-red-500 p-3 border-b-2 text-gray-600 ": true,
-              "border-red-500 text-gray-800  ": currentPathName === link.href,
+              "border-red-500 text-red-600 font-medium ": currentPathName === link.href,
             })}
             href={link.href}
           >

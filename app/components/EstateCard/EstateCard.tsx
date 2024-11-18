@@ -10,7 +10,7 @@ interface ImageModel {
   id: number;
   url: string;
 }
-interface Props {
+export interface Estates {
   data: {
     id: number;
     estateType: string;
@@ -26,7 +26,8 @@ interface Props {
     description?: string;
   };
 }
-const EsatateCards = ({ data }: Props) => {
+const EsatateCards = ({ data }: Estates) => {
+  const itemsNumber = [1,2,3,4,5,6,8,8,9];
   return (
     <Card
       key={data.id}
@@ -46,6 +47,7 @@ const EsatateCards = ({ data }: Props) => {
       </Flex>
       <Table.Root layout="fixed" size="3" className=" font-thin">
         <Table.Body>
+         
           <Table.Row align="center" className="text-lg">
             <Table.Cell justify="center"> {data.estateType}</Table.Cell>
             <Table.Cell justify="center" className=" font-medium">
@@ -58,6 +60,13 @@ const EsatateCards = ({ data }: Props) => {
               {estateCardElement.location}
             </Table.Cell>
           </Table.Row>
+          <Table.Row className="text-lg">
+            <Table.Cell justify="center"> {data.space}</Table.Cell>
+            <Table.Cell justify="center" className=" font-medium">
+              {estateCardElement.space}
+            </Table.Cell>
+          </Table.Row>
+
           {data.floor && (
             <Table.Row className="text-lg">
               <Table.Cell justify="center"> {data.floor}</Table.Cell>

@@ -1,10 +1,20 @@
-interface FiltersTypes  {
- filterType:string
-    items:String[]
+interface FilterTypesComponent  {
+    filterType:string,
+    filterItems: string[]
+
 }
-export const filters:FiltersTypes[] = [
-    { "filterType": "سعر المتر المربع", "items": ["100","200","300","أكثر من 500"]},
-    { "filterType": "حالة العقار", "items": ["مكسي","عالعضم"]},
-    { "filterType": "مكان العقار", "items": ["وسط المدينة","أطراف المدينة","في السوق"]},
+
+
+export interface FilterTypes{
+    
+    filterBy: string,
+    filterItem:string
+}
+
+export const filters:FilterTypesComponent[] = [
+    { "filterType": "سعر المتر المربع", "filterItems": ["الكل","20000","30000","40000","أكثر من 500"]},
+    { "filterType": "حالة العقار", "filterItems": ["الكل","مكسي","عالعضم"]},
+    { "filterType": "مكان العقار", "filterItems": ["الكل","وسط المدينة","أطراف المدينة","في السوق"]},
+    { "filterType": "مساحة العقار", "filterItems": ["الكل","150","100","أقل من 100"]},
     
 ]
