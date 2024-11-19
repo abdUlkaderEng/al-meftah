@@ -16,7 +16,7 @@ const NewEstatesPage = () => {
   console.log(selectedSpace);
   return (
     <Box p="5">
-      <Filters filtersArray={selectedSpace} setFilter={setSelectedSpace} />
+      <Filters  />
       <Grid columns={{ initial: "1", sm: "2", md: "3" }} pt="2" gap="5">
         {loading ? <CardsLoadingPage /> : <></>}
         {selectedSpace?.map(selectedFilter => selectedFilter.filterItem === "الكل"

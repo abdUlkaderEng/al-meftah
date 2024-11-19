@@ -25,6 +25,13 @@ const ValidationPage = () => {
               className={Style.formInput}
             />
           </Form.Field>
+          <Form.Field name="UserName">
+            <Form.Control
+              type="text"
+              placeholder="اسم المستخدم"
+              className={Style.formInput}
+            />
+          </Form.Field>
           <Form.Field name="Password" aria-required>
             <Box className={Style.inputWrapper}>
               <Form.Control

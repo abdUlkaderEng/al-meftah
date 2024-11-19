@@ -12,7 +12,7 @@ const OldEstatePage = () => {
 
   return (
     <Box p="5">
-      <Filters />
+      <Filters  />
       <Grid columns={{ initial: "1", sm: "2", md: "3" }} pt="2" gap="5">
         {loading ? <CardsLoadingPage /> : <></>}
 

@@ -17,7 +17,7 @@ interface Props {
   setFilter: (filterObject: FilterTypes[]) => void;
   filtersArray: FilterTypes[];
 }
-const Filters = ({ setFilter, filtersArray }: Props) => {
+const Filters = () => {
   let selectedFilterType = "";
   return (
     <Flex justify="between" align="center" className="mt-8 pb-2">
