@@ -1,8 +1,8 @@
-// app/api/auth/[...nextauth]/route.ts
+import prisma from "@/prisma/client";
+import bcrypt from "bcrypt";
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import prisma from "@/prisma/client";
-import bcrypt from "bcrypt"
+import router from "next/router";
 const getUserByEmail =async (email:string) => {
   return await prisma.adminUser.findUnique({
     where: { email },
@@ -25,6 +25,7 @@ export const authOptions :AuthOptions = {
         const { userName, password } = credentials as {
           userName: string;
           password: string;
+          
          };
          
         //  if(email === getUserByEmail(email) )
@@ -32,7 +33,7 @@ export const authOptions :AuthOptions = {
            throw new Error("invalid user name")
          if(password !=="123")
           throw new Error("invalid password")
-         
+        
           return {id:"123",name:"johnDoe",email:"john@gmail.com"}
         },
       }),

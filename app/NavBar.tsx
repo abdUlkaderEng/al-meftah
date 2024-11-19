@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import Style from "./navLink.module.css";
 import { Pencil1Icon } from "@radix-ui/react-icons";
-import { signIn } from "next-auth/react";
-import { RiEditLine } from "react-icons/ri";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { PiSignInLight, PiSignOutLight } from "react-icons/pi";
 
 const NavBar = () => {
   const currentPathName = usePathname();
@@ -20,10 +20,9 @@ const NavBar = () => {
     { linkLabel: "أراضي زراعية", href: "/agriculturalEstate" },
     { linkLabel: "تعهدات وإكساء", href: "/pledge" },
   ];
-  console.log(currentPathName);
+  const { status } = useSession();
   return (
     <>
-    
       <nav
         className={
           "flex flex-row-reverse text-center justify-items-stretch justify-evenly p-5  "
@@ -34,24 +33,32 @@ const NavBar = () => {
             key={link.linkLabel}
             className={classNames({
               "hover:border-red-500 p-3 border-b-2 text-gray-600 ": true,
-              "border-red-500 text-red-600 font-medium ": currentPathName === link.href,
+              "border-red-500 text-red-600 font-medium ":
+                currentPathName === link.href,
             })}
             href={link.href}
           >
             {link.linkLabel}
           </Link>
         ))}
-          <Button
-        onClick={() => signIn()}
-        className=" rounded-full justify-items-center   w-4 h-4 "
-      >
-        
-        <RiEditLine className="w-4 h-4  " fontSize="5" />
-      </Button>
 
+        {status === "authenticated" ? (
+          <Link
+            className=" rounded-full justify-items-center   w-4 h-4 "
+            href="/api/auth/signout"
+          >
+            <PiSignOutLight className="w-6 h-6  " fontSize="5" />
+          </Link>
+        ) : (
+          <Link
+            className=" rounded-full justify-items-center   w-4 h-4 "
+            href="/api/auth/signin"
+          >
+            <PiSignInLight className="w-6 h-6  " fontSize="5" />
+          </Link>
+        )}
       </nav>
     </>
-
   );
 };
 

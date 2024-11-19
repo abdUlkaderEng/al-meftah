@@ -6,6 +6,8 @@ import { signIn } from "next-auth/react";
 import React, { useState } from "react";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import Style from "./formStyle.module.css";
+import { redirect } from "next/dist/server/api-utils";
+import router from "next/router";
 const SignIn = () => {
   const [visible, setVisible] = useState(false);
 
@@ -15,11 +17,18 @@ const SignIn = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const result = await signIn("credentials", {
-      userName: userName,
-      password: password,
-      redirect: false,
-    });
+    const result = await signIn(
+      "credentials",
+      {
+        userName: userName,
+        password: password,
+        redirect: false,
+      },
+      
+    );
+    if (!result?.error)
+      window.location.href="/"
+      
     console.log(result);
   };
 
