@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import { RiEditLine } from "react-icons/ri";
+import { signIn } from "next-auth/react";
 
 interface Props {
   setFilter: (filterObject: FilterTypes[]) => void;
@@ -21,13 +22,7 @@ const Filters = () => {
   let selectedFilterType = "";
   return (
     <Flex justify="between" align="center" className="mt-8 pb-2">
-      <Link
-        className=" rounded-full justify-items-center   w-7 h-7 pl-8"
-        href={"/validation"}
-      >
-      <RiEditLine className="w-7 h-7  " fontSize="5" />  
-      </Link>
-
+      
       <Box>
         {filters.map((filterComponent) => (
           <Box
@@ -52,7 +47,6 @@ const Filters = () => {
                   <Box key={index}>
                     <DropdownMenu.Item
                       className={Styles.item}
-                      
                       onClick={() => {}}
                     >
                       {item}

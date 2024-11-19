@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import Style from "./navLink.module.css";
 import { Pencil1Icon } from "@radix-ui/react-icons";
+import { signIn } from "next-auth/react";
+import { RiEditLine } from "react-icons/ri";
 
 const NavBar = () => {
   const currentPathName = usePathname();
@@ -21,6 +23,7 @@ const NavBar = () => {
   console.log(currentPathName);
   return (
     <>
+    
       <nav
         className={
           "flex flex-row-reverse text-center justify-items-stretch justify-evenly p-5  "
@@ -38,6 +41,14 @@ const NavBar = () => {
             {link.linkLabel}
           </Link>
         ))}
+          <Button
+        onClick={() => signIn()}
+        className=" rounded-full justify-items-center   w-4 h-4 "
+      >
+        
+        <RiEditLine className="w-4 h-4  " fontSize="5" />
+      </Button>
+
       </nav>
     </>
 

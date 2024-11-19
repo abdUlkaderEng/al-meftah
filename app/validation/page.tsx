@@ -1,44 +1,52 @@
 "use client";
-import React, { useState } from "react";
-import * as Form from "@radix-ui/react-form";
-import { Box, Button, Heading } from "@radix-ui/themes";
 import { Checkbox } from "@radix-ui/react-checkbox";
-import Style from "./formStyle.module.css";
-import { EyeClosedIcon, EyeNoneIcon, EyeOpenIcon } from "@radix-ui/react-icons";
+import * as Form from "@radix-ui/react-form";
+import { Box, Heading } from "@radix-ui/themes";
+import { signIn } from "next-auth/react";
+import React, { useState } from "react";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
-import prisma from "@/prisma/client";
-import adminCheck from "./adminCheck";
-const ValidationPage = () => {
+import Style from "./formStyle.module.css";
+const SignIn = () => {
   const [visible, setVisible] = useState(false);
-  
+
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    const result = await signIn("credentials", {
+      userName: userName,
+      password: password,
+      redirect: false,
+    });
+    console.log(result);
+  };
+
   return (
     <Box className={Style.body}>
-      <Form.Root className={Style.formContainer}>
+      <Form.Root onSubmit={handleSubmit} className={Style.formContainer}>
         <Heading className="p-6 text-center text-gray-800 font-thin">
           التحقق من الصلاحية
         </Heading>
         <Box>
-          <Form.Field name="Email">
-            <Form.Control
-              type="email"
-              placeholder="البريد الإلكتروني"
-              className={Style.formInput}
-            />
-          </Form.Field>
           <Form.Field name="UserName">
             <Form.Control
               type="text"
               placeholder="اسم المستخدم"
               className={Style.formInput}
+              onChange={(e) => setUserName(e.target.value)}
+              required
             />
           </Form.Field>
-          <Form.Field name="Password" aria-required>
+          <Form.Field name="Password">
             <Box className={Style.inputWrapper}>
               <Form.Control
+                required
                 className={Style.formInput}
                 type={visible ? "text" : "password"}
                 placeholder="كلمة المرور"
-                
+                onChange={(e) => setPassword(e.target.value)}
               />
 
               <Checkbox
@@ -55,7 +63,7 @@ const ValidationPage = () => {
             </Box>
           </Form.Field>
         </Box>
-        <Form.FormSubmit className={Style.formSubmit}>
+        <Form.FormSubmit type="submit" className={Style.formSubmit}>
           تسجيل الدخول
         </Form.FormSubmit>
       </Form.Root>
@@ -63,4 +71,4 @@ const ValidationPage = () => {
   );
 };
 
-export default ValidationPage;
+export default SignIn;
